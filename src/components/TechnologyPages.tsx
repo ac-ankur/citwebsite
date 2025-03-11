@@ -4,7 +4,6 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
-  Container,
   IconButton,
 } from "@mui/material";
 import styled from "styled-components";
@@ -31,6 +30,11 @@ const techIcons = [
   { icon: rpaIcon, title: "RPA" },
   { icon: customAppsIcon, title: "Custom Applications" },
 ];
+
+// Define prop interfaces for styled components
+interface MobileAwareProps {
+  isMobile?: boolean;
+}
 
 // Main container with perspective for 3D effect
 const Perspective3DContainer = styled(Box)`
@@ -106,7 +110,7 @@ const StackContainer = styled(Box)`
 `;
 
 // Individual stacked card
-const StackCard = styled(Box)`
+const StackCard = styled(Box)<MobileAwareProps>`
   position: absolute;
   width: ${props => props.isMobile ? '85%' : '65%'};
   height: ${props => props.isMobile ? '35%' : '60%'};
@@ -155,7 +159,7 @@ const StackCard = styled(Box)`
 `;
 
 // Image container with 3D effect
-const ImageContainer = styled(Box)`
+const ImageContainer = styled(Box)<MobileAwareProps>`
   flex: ${props => props.isMobile ? '1' : '0 0 40%'};
   display: flex;
   justify-content: center;
@@ -199,7 +203,7 @@ const TechImage = styled.img`
 `;
 
 // Content container
-const ContentContainer = styled(Box)`
+const ContentContainer = styled(Box)<MobileAwareProps>`
   flex: ${props => props.isMobile ? '2' : '0 0 60%'};
   display: flex;
   flex-direction: column;
@@ -243,7 +247,11 @@ const ProgressContainer = styled(Box)`
   z-index: 10;
 `;
 
-const ProgressDot = styled(Box)`
+interface ProgressDotProps {
+  active?: boolean;
+}
+
+const ProgressDot = styled(Box)<ProgressDotProps>`
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -261,12 +269,12 @@ const TechnologiesPage = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const cardsRef = useRef([]);
+  const cardsRef = useRef<(React.RefObject<HTMLDivElement>)[]>([]);
   
   // Configure refs for cards
   cardsRef.current = Array(techIcons.length)
-    .fill()
-    .map((_, i) => cardsRef.current[i] || React.createRef());
+    .fill(null)
+    .map((_, i) => cardsRef.current[i] || React.createRef<HTMLDivElement>());
 
   // Initialize card positions on mount
   useEffect(() => {
@@ -293,22 +301,22 @@ const TechnologiesPage = () => {
         if (diff === 0) {
           // Active card
           card.style.transform = `translateZ(0px) rotateY(0deg)`;
-          card.style.opacity = 1;
-          card.style.zIndex = techIcons.length;
+          card.style.opacity = '1';
+          card.style.zIndex = `${techIcons.length}`;
         } else if (diff > 0 && diff < 3) {
           // Cards to the right (behind)
           card.style.transform = `translateZ(${-100 * diff}px) translateX(${50 * diff}px) rotateY(${-5 * diff}deg)`;
-          card.style.opacity = 1 - (diff * 0.3);
-          card.style.zIndex = techIcons.length - diff;
+          card.style.opacity = `${1 - (diff * 0.3)}`;
+          card.style.zIndex = `${techIcons.length - diff}`;
         } else if (diff < 0 && diff > -3) {
           // Cards to the left (behind)
           card.style.transform = `translateZ(${100 * diff}px) translateX(${50 * diff}px) rotateY(${-5 * diff}deg)`;
-          card.style.opacity = 1 - (Math.abs(diff) * 0.3);
-          card.style.zIndex = techIcons.length - Math.abs(diff);
+          card.style.opacity = `${1 - (Math.abs(diff) * 0.3)}`;
+          card.style.zIndex = `${techIcons.length - Math.abs(diff)}`;
         } else {
           // Hide cards too far away
-          card.style.opacity = 0;
-          card.style.zIndex = 0;
+          card.style.opacity = '0';
+          card.style.zIndex = '0';
         }
       }
     });
@@ -339,7 +347,7 @@ const TechnologiesPage = () => {
   };
 
   // Handle direct navigation via progress dots
-  const handleDotClick = (index) => {
+  const handleDotClick = (index: number) => {
     if (isAnimating || index === activeIndex) return;
     
     setIsAnimating(true);
@@ -351,7 +359,7 @@ const TechnologiesPage = () => {
   };
 
   return (
-    <Box >
+    <Box style={{backgroundColor: "#121212"}}>
     <Perspective3DContainer>
       <AnimatedBackground />
       
@@ -397,7 +405,7 @@ const TechnologiesPage = () => {
               </Typography>
               
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                {Array(5).fill().map((_, i) => (
+                {Array(5).fill(null).map((_, i) => (
                   <Box
                     key={i}
                     sx={{

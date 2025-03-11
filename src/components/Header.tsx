@@ -319,8 +319,6 @@ const Header: React.FC = () => {
     { name: "Technologies", path: "/technologies" },
     { name: "Domain Verticals", path: "/domainvertical" },
     { name: "Services", path: "/services" },
-  
-  
     { name: "Team", path: "/team" },
   ];  
   
@@ -373,7 +371,7 @@ const Header: React.FC = () => {
         <NavLinks>
           {navItems.map((item, i) => (
             <NavItem 
-              key={item}
+              key={item.name}
               custom={i}
               initial="hidden"
               animate="visible"
@@ -381,7 +379,7 @@ const Header: React.FC = () => {
               onHoverStart={() => setHoveredIndex(i)}
               onHoverEnd={() => setHoveredIndex(null)}
             >
-                <Link to={item.path} style={{ textDecoration: "none" }}>
+              <Link to={item.path} style={{ textDecoration: "none" }}>
                 <NavText>{item.name}</NavText>
               </Link>
               <AnimatePresence>
@@ -435,7 +433,7 @@ const Header: React.FC = () => {
           >
             {navItems.map((item, i) => (
               <MobileNavItem
-                key={item}
+                key={item.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -446,7 +444,9 @@ const Header: React.FC = () => {
                 whileHover={{ scale: 1.05, color: "#ff3333" }}
                 onClick={() => setIsOpen(false)}
               >
-                {item}
+                <Link to={item.path} style={{ textDecoration: "none", color: "inherit" }}>
+                  {item.name}
+                </Link>
               </MobileNavItem>
             ))}
             

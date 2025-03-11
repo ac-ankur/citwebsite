@@ -271,84 +271,84 @@ const ContactLabel = styled.span`
 `;
 
 // Newsletter section
-const NewsletterSection = styled.div`
-  grid-column: span 2;
+// const NewsletterSection = styled.div`
+//   grid-column: span 2;
   
-  @media (max-width: 900px) {
-    grid-column: span 1;
-  }
-`;
+//   @media (max-width: 900px) {
+//     grid-column: span 1;
+//   }
+// `;
 
-const NewsletterDescription = styled.p`
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 20px;
-`;
+// const NewsletterDescription = styled.p`
+//   font-size: 14px;
+//   line-height: 1.6;
+//   color: rgba(255, 255, 255, 0.7);
+//   margin-bottom: 20px;
+// `;
 
-const EmailForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
+// const EmailForm = styled.form`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 12px;
+// `;
 
-const EmailInput = styled(motion.input)`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 0, 0, 0.2);
-  border-radius: 8px;
-  height: 42px;
-  padding: 0 16px;
-  color: white;
-  font-size: 14px;
-  width: 100%;
-  transition: all 0.3s ease;
+// const EmailInput = styled(motion.input)`
+//   background: rgba(255, 255, 255, 0.05);
+//   border: 1px solid rgba(255, 0, 0, 0.2);
+//   border-radius: 8px;
+//   height: 42px;
+//   padding: 0 16px;
+//   color: white;
+//   font-size: 14px;
+//   width: 100%;
+//   transition: all 0.3s ease;
   
-  &:focus {
-    outline: none;
-    border-color: rgba(255, 0, 0, 0.5);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.1);
-  }
+//   &:focus {
+//     outline: none;
+//     border-color: rgba(255, 0, 0, 0.5);
+//     background: rgba(255, 255, 255, 0.08);
+//     box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.1);
+//   }
   
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.4);
-  }
-`;
+//   &::placeholder {
+//     color: rgba(255, 255, 255, 0.4);
+//   }
+// `;
 
-const SubscribeButton = styled(motion.button)`
-  background: linear-gradient(135deg, #ff0000, #990000);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  height: 42px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+// const SubscribeButton = styled(motion.button)`
+//   background: linear-gradient(135deg, #ff0000, #990000);
+//   color: white;
+//   border: none;
+//   border-radius: 8px;
+//   height: 42px;
+//   font-size: 14px;
+//   font-weight: 600;
+//   cursor: pointer;
+//   transition: all 0.3s ease;
+//   position: relative;
+//   overflow: hidden;
   
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #cc0000, #800000);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     background: linear-gradient(135deg, #cc0000, #800000);
+//     opacity: 0;
+//     transition: opacity 0.3s ease;
+//   }
   
-  &:hover::after {
-    opacity: 1;
-  }
+//   &:hover::after {
+//     opacity: 1;
+//   }
   
-  span {
-    position: relative;
-    z-index: 1;
-  }
-`;
+//   span {
+//     position: relative;
+//     z-index: 1;
+//   }
+// `;
 
 // Bottom section
 const BottomSection = styled.div`
