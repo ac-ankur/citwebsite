@@ -121,8 +121,8 @@ const AnimatedText = styled(Typography)`
 const ClipPathSection = styled(Box)`
   position: relative;
   padding: 8rem 2rem;
-  background:rgb(91, 59, 59);
-  clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%);
+  background:rgb(0, 0, 0);
+  clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
   margin-top: -5rem;
   z-index: 10;
 `;
@@ -197,7 +197,7 @@ const WavySection = styled(Box)`
     left: 0;
     right: 0;
     height: 120px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23121212' fill-opacity='1' d='M0,192L60,181.3C120,171,240,149,360,149.3C480,149,600,171,720,165.3C840,160,960,128,1080,117.3C1200,107,1320,117,1380,122.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+    // background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23121212' fill-opacity='1' d='M0,192L60,181.3C120,171,240,149,360,149.3C480,149,600,171,720,165.3C840,160,960,128,1080,117.3C1200,107,1320,117,1380,122.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
     background-size: cover;
   }
 
@@ -208,7 +208,7 @@ const WavySection = styled(Box)`
     left: 0;
     right: 0;
     height: 120px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23121212' fill-opacity='1' d='M0,224L60,229.3C120,235,240,245,360,240C480,235,600,213,720,192C840,171,960,149,1080,149.3C1200,149,1320,171,1380,181.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+    // background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23121212' fill-opacity='1' d='M0,224L60,229.3C120,235,240,245,360,240C480,235,600,213,720,192C840,171,960,149,1080,149.3C1200,149,1320,171,1380,181.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
     background-size: cover;
   }
 `;
@@ -231,7 +231,7 @@ const ClientLogoContainer = styled(Box)`
 // Gradient Border Cards with hover effect - Red/Black theme
 const GradientBorderCard = styled(Card)`
   position: relative;
-  background:rgb(91, 59, 59);
+  background:rgb(250, 108, 108);
   border-radius: 16px;
   padding: 1rem;
   overflow: hidden;
@@ -248,7 +248,7 @@ const GradientBorderCard = styled(Card)`
     z-index: -1;
     margin: -2px;
     border-radius: inherit;
-    background: linear-gradient(135deg, #ff0000, #880000);
+    background: linear-gradient(135deg,rgb(255, 167, 167),rgb(245, 108, 108));
     opacity: 0;
     transition: opacity 0.4s ease;
   }
@@ -491,7 +491,7 @@ const HomePage = () => {
         <Box maxWidth="1200px" margin="0 auto">
           <NeonTitle
             variant="h3"
-            // component="h2"
+            
             className="animate-on-scroll"
             id="about-title"
             sx={{

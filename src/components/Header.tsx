@@ -58,26 +58,26 @@ const LogoContainer = styled(motion.div)`
   z-index: 10;
 `;
 
-const LogoSymbol = styled(motion.div)`
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #ff0000, #990000);
-  border-radius: 8px;
-  transform: rotate(45deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+// const LogoSymbol = styled(motion.div)`
+//   width: 40px;
+//   height: 40px;
+//   background: linear-gradient(135deg, #ff0000, #990000);
+//   border-radius: 8px;
+//   transform: rotate(45deg);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
   
-  &::before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    background: black;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-  }
-`;
+//   &::before {
+//     content: '';
+//     width: 20px;
+//     height: 20px;
+//     border-radius: 4px;
+//     background: black;
+//     border: 2px solid rgba(255, 255, 255, 0.8);
+//   }
+// `;
 
 const LogoText = styled(motion.div)`
   font-size: 26px;
@@ -361,10 +361,10 @@ const Header: React.FC = () => {
         <RadialBackground />
         
         <LogoContainer>
-          <LogoSymbol 
+          {/* <LogoSymbol 
             whileHover={{ rotate: 225, transition: { duration: 0.5 } }} 
             whileTap={{ scale: 0.9 }}
-          />
+          /> */}
           <LogoText>ConsultIT</LogoText>
         </LogoContainer>
         

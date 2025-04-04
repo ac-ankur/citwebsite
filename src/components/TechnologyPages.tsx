@@ -74,18 +74,50 @@ const AnimatedBackground = styled(Box)`
 `;
 
 // Floating title with neon glow
-const FloatingTitle = styled(Typography)`
+// const FloatingTitle = styled(Typography)`
+//   position: absolute;
+//   top: 15%;
+//   margin-bottom: 40px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   color: #fff;
+//   text-transform: uppercase;
+//   letter-spacing: 3px;
+//   text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
+//   z-index: 10;
+//   font-weight: 700;
+
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     bottom: -10px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     width: 40%;
+//     height: 2px;
+//     background: linear-gradient(90deg, transparent, #ff0000, transparent);
+//   }
+// `;
+
+const NeonTitle = styled(Typography)`
+z-index: 10;
   position: absolute;
-  top: 15%;
-  margin-bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
+   transform: translateX(-50%);
+  color: transparent;
+  background: linear-gradient(90deg, #ff3333, #cc0000);
+  background-clip: text;
+  -webkit-background-clip: text;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 50px;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
-  z-index: 10;
-  font-weight: 700;
+  font-size: 2.2rem;
+  left: 50%;
+    top: 15%;
+  
 
   &::after {
     content: "";
@@ -93,15 +125,26 @@ const FloatingTitle = styled(Typography)`
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40%;
-    height: 2px;
+    width: 250px;
+    height: 3px;
     background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    animation: glow 2s infinite;
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
   }
 `;
-
 // 3D stack container
 const StackContainer = styled(Box)`
   position: relative;
+  margin-top:3rem;
   width: 90%;
   max-width: 1200px;
   height: 75vh;
@@ -370,10 +413,12 @@ const TechnologiesPage = () => {
 
   return (
     <Box style={{ backgroundColor: "#121212" }}>
+        
       <Perspective3DContainer>
+      
         <AnimatedBackground />
-
-        <FloatingTitle variant="h3">Our Technologies</FloatingTitle>
+        <NeonTitle variant="h3" > Our Technologies  </NeonTitle>
+      
 
         <StackContainer>
           {techIcons.map((tech, index) => (

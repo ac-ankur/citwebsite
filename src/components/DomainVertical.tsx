@@ -219,7 +219,7 @@ const NeonTitle = styled(Typography)`
   text-align: center;
   margin-bottom: 3rem;
   filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
-  font-weight: 700;
+  font-weight: 600 !important;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   font-size: 2.2rem;
@@ -230,8 +230,8 @@ const NeonTitle = styled(Typography)`
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 2px;
+    width: 250px;
+    height: 3px;
     background: linear-gradient(90deg, transparent, #ff0000, transparent);
     animation: glow 2s infinite;
   }
@@ -408,7 +408,7 @@ const TrueZigZagLayout: React.FC = () => {
         <ZigZagContainer ref={containerRef}>
           <Box sx={{ textAlign: "center", mb: 6 }}>
             <NeonTitle variant="h3" >
-              Our Services
+              Domain Verticals
             </NeonTitle>
           </Box>
 

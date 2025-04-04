@@ -99,26 +99,26 @@ const LogoContainer = styled(motion.div)`
   margin-bottom: 20px;
 `;
 
-const LogoSymbol = styled(motion.div)`
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #ff0000, #990000);
-  border-radius: 8px;
-  transform: rotate(45deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+// const LogoSymbol = styled(motion.div)`
+//   width: 36px;
+//   height: 36px;
+//   background: linear-gradient(135deg, #ff0000, #990000);
+//   border-radius: 8px;
+//   transform: rotate(45deg);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
   
-  &::before {
-    content: '';
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    background: black;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-  }
-`;
+//   &::before {
+//     content: '';
+//     width: 18px;
+//     height: 18px;
+//     border-radius: 4px;
+//     background: black;
+//     border: 2px solid rgba(255, 255, 255, 0.8);
+//   }
+// `;
 
 const LogoText = styled.span`
   font-size: 24px;
@@ -474,9 +474,9 @@ const Footer: React.FC = () => {
         {/* Company Info Section */}
         <LogoSection>
           <LogoContainer>
-            <LogoSymbol 
+            {/* <LogoSymbol 
               whileHover={{ rotate: 225, transition: { duration: 0.5 } }} 
-            />
+            /> */}
             <LogoText>ConsultIT</LogoText>
           </LogoContainer>
           

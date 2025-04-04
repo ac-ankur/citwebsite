@@ -29,10 +29,10 @@ const Services: React.FC = () => {
       <div className="services-container">
         {/* Heading with animated underline */}
         <div className="services-heading">
-          <h2 className="services-title">Our Services</h2>
-          <div className="animated-underline">
+          <h3 className="services-title">Our Services</h3>
+          {/* <div className="animated-underline">
             <div className="underline-glow"></div>
-          </div>
+          </div> */}
         </div>
        
         {/* Services grid */}
