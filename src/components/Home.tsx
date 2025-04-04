@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import  { useState, useEffect, useRef } from "react";
 import {
   Box,
   Typography,
@@ -111,7 +111,6 @@ const HeroContent = styled(Box)`
   max-width: 1200px;
   padding: 0 2rem;
 `;
-
 const AnimatedText = styled(Typography)`
   overflow: hidden;
   margin: 0 auto;
@@ -122,7 +121,7 @@ const AnimatedText = styled(Typography)`
 const ClipPathSection = styled(Box)`
   position: relative;
   padding: 8rem 2rem;
-  background: rgb(91, 59, 59);
+  background:rgb(91, 59, 59);
   clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%);
   margin-top: -5rem;
   z-index: 10;
@@ -216,7 +215,7 @@ const WavySection = styled(Box)`
 
 // Client Logo Hover Effect with Red/Black theme
 const ClientLogoContainer = styled(Box)`
-  background: rgb(255, 255, 255);
+  background:rgb(255, 255, 255);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -232,7 +231,7 @@ const ClientLogoContainer = styled(Box)`
 // Gradient Border Cards with hover effect - Red/Black theme
 const GradientBorderCard = styled(Card)`
   position: relative;
-  background: rgb(91, 59, 59);
+  background:rgb(91, 59, 59);
   border-radius: 16px;
   padding: 1rem;
   overflow: hidden;
@@ -267,7 +266,7 @@ const GradientBorderCard = styled(Card)`
 // Horizontal Scroll Section with Red/Black theme
 const ScrollerSection = styled(Box)`
   padding: 4rem 0;
-  background: rgb(91, 59, 59);
+  background:rgb(91, 59, 59);
   position: relative;
   overflow: hidden;
   
@@ -286,22 +285,19 @@ const ScrollerSection = styled(Box)`
   }
 `;
 
-// Parallax Container - Enhanced for proper parallax effects
-const ParallaxContainer = styled(Box)<{ scrollOffset: number }>`
-  position: relative;
-  overflow: hidden;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  transform: ${props => `translateY(${props.scrollOffset * 0.1}px)`};
-  transition: transform 0.1s ease-out;
-`;
+// Parallax Scroll Container - New element for enhanced scroll effects
+// const ParallaxContainer = styled(Box)`
+//   position: relative;
+//   overflow: hidden;
+//   transform-style: preserve-3d;
+//   perspective: 1000px;
+// `;
 
-// Parallax Element - For elements that move at different speeds
-const ParallaxElement = styled(Box)<{ scrollSpeed: number; scrollOffset: number }>`
-  position: relative;
-  transform: ${props => `translateY(${props.scrollOffset * props.scrollSpeed}px)`};
-  transition: transform 0.1s ease-out;
-`;
+// // Parallax Element - New element for enhanced scroll effects
+// const ParallaxElement = styled(Box)`
+//   position: relative;
+//   transition: transform 0.5s ease-out;
+// `;
 
 // Define a type for the visibility state
 interface VisibilityState {
@@ -316,7 +312,7 @@ const HomePage = () => {
   const [isVisible, setIsVisible] = useState<VisibilityState>({});
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
+  // const [scrollY, setScrollY] = useState(0);
   
   const aboutRef = useRef<HTMLDivElement>(null);
   const techRef = useRef<HTMLDivElement>(null);
@@ -348,17 +344,17 @@ const HomePage = () => {
     }
   }, [textIndex, charIndex]);
   
-  // Scroll position effect for parallax - now using the scrollY value
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+  // Scroll position effect for parallax
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
     
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   
   // Enhanced Intersection Observer for animations
   useEffect(() => {
@@ -404,97 +400,90 @@ const HomePage = () => {
   
   return (
     <Box>
-      {/* Modern Glassmorphism Hero Section with Red Accent and Parallax */}
+      {/* Modern Glassmorphism Hero Section with Red Accent */}
       <GlassmorphismHero>
-        <ParallaxContainer scrollOffset={scrollY}>
-          <HeroContent>
-            <Typography
-              variant="h1"
-              component="h1"
+        <HeroContent>
+          <Typography
+            variant="h1"
+            component="h1"
+            sx={{
+              fontWeight: 900,
+              fontSize: { xs: "2.5rem", md: "4rem" },
+              marginBottom: "2rem",
+              textTransform: "uppercase",
+              letterSpacing: "3px",
+              textShadow: "0 2px 10px rgba(0,0,0,0.3)"
+            }}
+          >
+            ConsultIT Technologies
+          </Typography>
+          
+          <AnimatedText
+            variant="h4"
+            // component="h2"
+            sx={{
+              fontWeight: 300,
+              height: "4rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative"
+            }}
+          >
+            {heroTexts[textIndex].substring(0, charIndex)}
+            <Box
+              component="span"
               sx={{
-                fontWeight: 900,
-                fontSize: { xs: "2.5rem", md: "4rem" },
-                marginBottom: "2rem",
-                textTransform: "uppercase",
-                letterSpacing: "3px",
-                textShadow: "0 2px 10px rgba(0,0,0,0.3)",
-                transform: `translateY(${scrollY * -0.05}px)`,
-                transition: "transform 0.1s ease-out"
+                width: "3px",
+                height: "1.5em",
+                backgroundColor: "white",
+                display: "inline-block",
+                animation: "blink 1s step-end infinite",
+                "@keyframes blink": {
+                  "from, to": { opacity: 1 },
+                  "50%": { opacity: 0 }
+                }
               }}
-            >
-              ConsultIT Technologies
-            </Typography>
-            
-            <AnimatedText
-              variant="h4"
-              sx={{
-                fontWeight: 300,
-                height: "4rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                transform: `translateY(${scrollY * -0.02}px)`,
-                transition: "transform 0.1s ease-out"
-              }}
-            >
-              {heroTexts[textIndex].substring(0, charIndex)}
-              <Box
-                component="span"
-                sx={{
-                  width: "3px",
-                  height: "1.5em",
-                  backgroundColor: "white",
-                  display: "inline-block",
-                  animation: "blink 1s step-end infinite",
-                  "@keyframes blink": {
-                    "from, to": { opacity: 1 },
-                    "50%": { opacity: 0 }
-                  }
-                }}
-              />
-            </AnimatedText>
-            
+            />
+          </AnimatedText>
+          
+          <Box
+            sx={{
+              marginTop: "3rem",
+              display: "flex",
+              justifyContent: "center",
+              gap: "1rem"
+            }}
+          >
             <Box
               sx={{
-                marginTop: "3rem",
-                display: "flex",
-                justifyContent: "center",
-                gap: "1rem",
-                transform: `translateY(${scrollY * -0.01}px)`,
-                transition: "transform 0.1s ease-out"
+                width: "10px",
+                height: "10px",
+                borderRadius: "50%",
+                background: textIndex === 0 ? "white" : "rgba(255,255,255,0.5)",
+                transition: "all 0.3s ease"
               }}
-            >
-              <Box
-                sx={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  background: textIndex === 0 ? "white" : "rgba(255,255,255,0.5)",
-                  transition: "all 0.3s ease"
-                }}
-              />
-              <Box
-                sx={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  background: textIndex === 1 ? "white" : "rgba(255,255,255,0.5)",
-                  transition: "all 0.3s ease"
-                }}
-              />
-              <Box
-                sx={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  background: textIndex === 2 ? "white" : "rgba(255,255,255,0.5)",
-                  transition: "all 0.3s ease"
-                }}
-              />
-            </Box>
-          </HeroContent>
-        </ParallaxContainer>
+            />
+            <Box
+              sx={{
+                width: "10px",
+                height: "10px",
+                borderRadius: "50%",
+                background: textIndex === 1 ? "white" : "rgba(255,255,255,0.5)",
+                transition: "all 0.3s ease"
+              }}
+            />
+            <Box
+              sx={{
+                width: "10px",
+                height: "10px",
+                borderRadius: "50%",
+                background: textIndex === 2 ? "white" : "rgba(255,255,255,0.5)",
+                transition: "all 0.3s ease"
+              }}
+            />
+          </Box>
+        </HeroContent>
       </GlassmorphismHero>
 
       {/* About Section with Clip Path & Float Card Effect */}
@@ -502,12 +491,11 @@ const HomePage = () => {
         <Box maxWidth="1200px" margin="0 auto">
           <NeonTitle
             variant="h3"
+            // component="h2"
             className="animate-on-scroll"
             id="about-title"
             sx={{
-              transform: isVisible["about-title"] 
-                ? `translateY(${scrollY * 0.02}px)` 
-                : "translateY(50px)",
+              transform: isVisible["about-title"] ? "translateY(0)" : "translateY(50px)",
               opacity: isVisible["about-title"] ? 1 : 0,
               transition: "transform 0.8s ease, opacity 0.8s ease"
             }}
@@ -517,91 +505,85 @@ const HomePage = () => {
           
           <Grid container spacing={4}>
             <Grid item xs={12} md={6}>
-              <ParallaxElement scrollSpeed={0.03} scrollOffset={scrollY}>
-                <GradientBorderCard
-                  className="animate-on-scroll"
-                  id="about-card-1"
-                  sx={{
-                    height: "100%",
-                    transform: isVisible["about-card-1"] ? "translateX(0)" : "translateX(-100px)",
-                    opacity: isVisible["about-card-1"] ? 1 : 0,
-                    transition: "transform 0.8s ease, opacity 0.8s ease"
-                  }}
-                >
-                  <CardContent>
-                    <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: "#ff0000" }}>
-                      Who We Are
-                    </Typography>
-                    <Typography variant="body1" paragraph>
-                      ConsultIT Technologies is an end-to-end IT solutions provider with a
-                      global customer base. We specialize in the domain verticals of
-                      Insurance, Manufacturing, Telecom, and Knowledge Portals. An ISO 9001,
-                      22000, and 27001 organization, quality and value for money are our
-                      driving forces.
-                    </Typography>
-                    <Typography variant="body1">
-                      Headed by three specialists who have held senior positions globally
-                      with over 25 years of leadership experience, they are hands-on
-                      technically in the latest technologies and understand multiple
-                      business domains. At ConsultIT, we mean business, and we ensure our
-                      team of professional and dedicated technology and support resources
-                      deliver as per your expectations.
-                    </Typography>
-                  </CardContent>
-                </GradientBorderCard>
-              </ParallaxElement>
+              <GradientBorderCard
+                className="animate-on-scroll"
+                id="about-card-1"
+                sx={{
+                  height: "100%",
+                  transform: isVisible["about-card-1"] ? "translateX(0)" : "translateX(-100px)",
+                  opacity: isVisible["about-card-1"] ? 1 : 0,
+                  transition: "transform 0.8s ease, opacity 0.8s ease"
+                }}
+              >
+                <CardContent>
+                  <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: "#ff0000" }}>
+                    Who We Are
+                  </Typography>
+                  <Typography variant="body1" paragraph>
+                    ConsultIT Technologies is an end-to-end IT solutions provider with a
+                    global customer base. We specialize in the domain verticals of
+                    Insurance, Manufacturing, Telecom, and Knowledge Portals. An ISO 9001,
+                    22000, and 27001 organization, quality and value for money are our
+                    driving forces.
+                  </Typography>
+                  <Typography variant="body1">
+                    Headed by three specialists who have held senior positions globally
+                    with over 25 years of leadership experience, they are hands-on
+                    technically in the latest technologies and understand multiple
+                    business domains. At ConsultIT, we mean business, and we ensure our
+                    team of professional and dedicated technology and support resources
+                    deliver as per your expectations.
+                  </Typography>
+                </CardContent>
+              </GradientBorderCard>
             </Grid>
             
             <Grid item xs={12} md={6}>
               <Grid container spacing={3} height="100%">
                 <Grid item xs={12}>
-                  <ParallaxElement scrollSpeed={0.05} scrollOffset={scrollY}>
-                    <GradientBorderCard
-                      className="animate-on-scroll"
-                      id="mission-card"
-                      sx={{
-                        transform: isVisible["mission-card"] ? "translateX(0)" : "translateX(100px)",
-                        opacity: isVisible["mission-card"] ? 1 : 0,
-                        transition: "transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s"
-                      }}
-                    >
-                      <CardContent>
-                        <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: "#ff0000" }}>
-                          Our Mission
-                        </Typography>
-                        <Typography variant="body1">
-                          To become a niche player in the areas of emerging technologies and
-                          become the customer's first choice.
-                        </Typography>
-                      </CardContent>
-                    </GradientBorderCard>
-                  </ParallaxElement>
+                  <GradientBorderCard
+                    className="animate-on-scroll"
+                    id="mission-card"
+                    sx={{
+                      transform: isVisible["mission-card"] ? "translateX(0)" : "translateX(100px)",
+                      opacity: isVisible["mission-card"] ? 1 : 0,
+                      transition: "transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s"
+                    }}
+                  >
+                    <CardContent>
+                      <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: "#ff0000" }}>
+                        Our Mission
+                      </Typography>
+                      <Typography variant="body1">
+                        To become a niche player in the areas of emerging technologies and
+                        become the customer's first choice.
+                      </Typography>
+                    </CardContent>
+                  </GradientBorderCard>
                 </Grid>
                 
                 <Grid item xs={12}>
-                  <ParallaxElement scrollSpeed={0.07} scrollOffset={scrollY}>
-                    <GradientBorderCard
-                      className="animate-on-scroll"
-                      id="vision-card"
-                      sx={{
-                        transform: isVisible["vision-card"] ? "translateX(0)" : "translateX(100px)",
-                        opacity: isVisible["vision-card"] ? 1 : 0,
-                        transition: "transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s"
-                      }}
-                    >
-                      <CardContent>
-                        <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: "#ff0000" }}>
-                          Our Vision
-                        </Typography>
-                        <Typography variant="body1">
-                          Complete projects on time with excellent quality, to ensure repeat
-                          orders and new customer acquisitions by referrals. To meet up
-                          business challenges and fulfill use cases where not many have
-                          succeeded.
-                        </Typography>
-                      </CardContent>
-                    </GradientBorderCard>
-                  </ParallaxElement>
+                  <GradientBorderCard
+                    className="animate-on-scroll"
+                    id="vision-card"
+                    sx={{
+                      transform: isVisible["vision-card"] ? "translateX(0)" : "translateX(100px)",
+                      opacity: isVisible["vision-card"] ? 1 : 0,
+                      transition: "transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s"
+                    }}
+                  >
+                    <CardContent>
+                      <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: "#ff0000" }}>
+                        Our Vision
+                      </Typography>
+                      <Typography variant="body1">
+                        Complete projects on time with excellent quality, to ensure repeat
+                        orders and new customer acquisitions by referrals. To meet up
+                        business challenges and fulfill use cases where not many have
+                        succeeded.
+                      </Typography>
+                    </CardContent>
+                  </GradientBorderCard>
                 </Grid>
               </Grid>
             </Grid>
@@ -609,175 +591,166 @@ const HomePage = () => {
         </Box>
       </ClipPathSection>
 
-      {/* Technology Section with Wavy Background and Parallax */}
+      {/* Technology Section with Wavy Background */}
       <WavySection id="tech-section" ref={techRef}>
-        <ParallaxContainer scrollOffset={-scrollY * 0.3}>
-          <Box sx={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto" }}>
-            <NeonTitle
-              variant="h3"
-              className="animate-on-scroll"
-              id="tech-title"
-              sx={{
-                transform: isVisible["tech-title"] ? "translateY(0)" : "translateY(50px)",
-                opacity: isVisible["tech-title"] ? 1 : 0,
-                transition: "transform 0.8s ease, opacity 0.8s ease"
-              }}
-            >
-              Our Technologies
-            </NeonTitle>
-            
-            <Grid container spacing={4}>
-              {[
-                "Flawless Project Execution",
-                "Domain Verticals/ SME",
-                "Software Support Services",
-                "Management Team",
-                "Project Showcase History",
-                "Product Implementation",
-                "Customer Speaks",
-                "Staff Augmentation Services",
-              ].map((title, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <ParallaxElement 
-                    scrollSpeed={0.04 + (index % 4) * 0.01} 
-                    scrollOffset={scrollY}
-                  >
-                    <FloatingCard
-                      className="animate-on-scroll"
-                      id={`tech-card-${index}`}
-                      sx={{
-                        transform: isVisible[`tech-card-${index}`] ? 
-                          "translateY(0) rotate(0deg)" : 
-                          `translateY(100px) rotate(${index % 2 === 0 ? -3 : 3}deg)`,
-                        opacity: isVisible[`tech-card-${index}`] ? 1 : 0,
-                        transition: `transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.1}s, opacity 0.8s ease ${index * 0.1}s`
-                      }}
-                    >
-                      <CardMedia
-                        component="img"
-                        height="150"
-                        image={techImages[index]}
-                        alt={title}
-                        sx={{
-                          objectFit: "contain",
-                          padding: "1rem",
-                          transition: "transform 0.5s ease",
-                          filter: "invert(1) drop-shadow(0 0 2px rgba(255,0,0,0.5))",
-                          "&:hover": {
-                            transform: "scale(1.1) rotate(5deg)",
-                            filter: "invert(1) drop-shadow(0 0 5px rgba(255,0,0,0.8))",
-                          },
-                        }}
-                      />
-                      <CardContent>
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: "bold",
-                            textAlign: "center",
-                            background: "linear-gradient(90deg, #ff0000, #cc0000)",
-                            backgroundClip: "text",
-                            WebkitBackgroundClip: "text",
-                            color: "transparent",
-                          }}
-                        >
-                          {title}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          color="#a0a0a0"
-                          sx={{ textAlign: "center", mt: 1 }}
-                        >
-                          {`Description about ${title}. Click "Read more" for details.`}
-                        </Typography>
-                      </CardContent>
-                    </FloatingCard>
-                  </ParallaxElement>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </ParallaxContainer>
-      </WavySection>
-
-      {/* Clients Section with 3D Coverflow Effect and Parallax */}
-      <ScrollerSection id="client-section" ref={clientRef}>
-        <ParallaxContainer scrollOffset={-scrollY * 0.1}>
-          <Box sx={{ maxWidth: "1200px", margin: "0 auto", padding: "0 2rem" }}>
-            <NeonTitle
-              variant="h3"
-              className="animate-on-scroll"
-              id="clients-title"
-              sx={{
-                transform: isVisible["clients-title"] ? 
-                  `translateY(${scrollY * 0.02}px)` : 
-                  "translateY(50px)",
-                opacity: isVisible["clients-title"] ? 1 : 0,
-                transition: "transform 0.8s ease, opacity 0.8s ease"
-              }}
-            >
-              Our Clients
-            </NeonTitle>
-          </Box>
-          
-          <Box
+        <Box sx={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto" }}>
+          <NeonTitle
+            variant="h3"
+            // component="h2"
             className="animate-on-scroll"
-            id="clients-slider"
+            id="tech-title"
             sx={{
-              opacity: isVisible["clients-slider"] ? 1 : 0,
-              transform: isVisible["clients-slider"] ? "translateY(0)" : "translateY(50px)",
-              transition: "opacity 0.8s ease, transform 0.8s ease"
+              transform: isVisible["tech-title"] ? "translateY(0)" : "translateY(50px)",
+              opacity: isVisible["tech-title"] ? 1 : 0,
+              transition: "transform 0.8s ease, opacity 0.8s ease"
             }}
           >
-            <Swiper
-              modules={[Autoplay, Pagination, EffectCoverflow]}
-              spaceBetween={30}
-              slidesPerView={isMobile ? 1 : 3}
-              centeredSlides={true}
-              loop={true}
-              autoplay={{ delay: 2000, disableOnInteraction: false }}
-              effect="coverflow"
-              coverflowEffect={{
-                rotate: 20,
-                stretch: 0,
-                depth: 200,
-                modifier: 1,
-                slideShadows: true,
-              }}
-              className="client-slider"
-            >
-              {clientLogos.map((logo, index) => (
-                <SwiperSlide key={index}>
-                  <ClientLogoContainer sx={{ 
-                    padding: "2rem", 
-                    display: "flex", 
-                    justifyContent: "center", 
-                    alignItems: "center", 
-                    height: "150px",
-                    border: "1px solid rgba(255, 0, 0, 0.1)"
-                  }}>
-                    <Box
-                      component="img"
-                      src={logo}
-                      alt={`Client ${index + 1}`}
+            Our Technologies
+          </NeonTitle>
+          
+          <Grid container spacing={4}>
+            {[
+              "Flawless Project Execution",
+              "Domain Verticals/ SME",
+              "Software Support Services",
+              "Management Team",
+              "Project Showcase History",
+              "Product Implementation",
+              "Customer Speaks",
+              "Staff Augmentation Services",
+            ].map((title, index) => (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <FloatingCard
+                  className="animate-on-scroll"
+                  id={`tech-card-${index}`}
+                  sx={{
+                    transform: isVisible[`tech-card-${index}`] ? 
+                      "translateY(0) rotate(0deg)" : 
+                      `translateY(100px) rotate(${index % 2 === 0 ? -3 : 3}deg)`,
+                    opacity: isVisible[`tech-card-${index}`] ? 1 : 0,
+                    transition: `transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.1}s, opacity 0.8s ease ${index * 0.1}s`
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="150"
+                    image={techImages[index]}
+                    alt={title}
+                    sx={{
+                      objectFit: "contain",
+                      padding: "1rem",
+                      transition: "transform 0.5s ease",
+                      filter: "invert(1) drop-shadow(0 0 2px rgba(255,0,0,0.5))",
+                      "&:hover": {
+                        transform: "scale(1.1) rotate(5deg)",
+                        filter: "invert(1) drop-shadow(0 0 5px rgba(255,0,0,0.8))",
+                      },
+                    }}
+                  />
+                  <CardContent>
+                    <Typography
+                      variant="h6"
                       sx={{
-                        maxWidth: "100%",
-                        maxHeight: "100%",
-                        objectFit: "contain",
-                        transition: "transform 0.5s ease, filter 0.3s ease",
-                        filter: "brightness(0.9) contrast(1.1)",
-                        "&:hover": {
-                          transform: "scale(1.1)",
-                          filter: "brightness(1.1) contrast(1.2) drop-shadow(0 0 5px rgba(255,0,0,0.5))",
-                        },
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        background: "linear-gradient(90deg, #ff0000, #cc0000)",
+                        backgroundClip: "text",
+                        WebkitBackgroundClip: "text",
+                        color: "transparent",
                       }}
-                    />
-                  </ClientLogoContainer>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </Box>
-        </ParallaxContainer>
+                    >
+                      {title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="#a0a0a0"
+                      sx={{ textAlign: "center", mt: 1 }}
+                    >
+                      {`Description about ${title}. Click "Read more" for details.`}
+                    </Typography>
+                  </CardContent>
+                </FloatingCard>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </WavySection>
+
+      {/* Clients Section with 3D Coverflow Effect */}
+      <ScrollerSection id="client-section" ref={clientRef}>
+        <Box sx={{ maxWidth: "1200px", margin: "0 auto", padding: "0 2rem" }}>
+          <NeonTitle
+            variant="h3"
+            // component="h2"
+            className="animate-on-scroll"
+            id="clients-title"
+            sx={{
+              transform: isVisible["clients-title"] ? "translateY(0)" : "translateY(50px)",
+              opacity: isVisible["clients-title"] ? 1 : 0,
+              transition: "transform 0.8s ease, opacity 0.8s ease"
+            }}
+          >
+            Our Clients
+          </NeonTitle>
+        </Box>
+        
+        <Box
+          className="animate-on-scroll"
+          id="clients-slider"
+          sx={{
+            opacity: isVisible["clients-slider"] ? 1 : 0,
+            transform: isVisible["clients-slider"] ? "translateY(0)" : "translateY(50px)",
+            transition: "opacity 0.8s ease, transform 0.8s ease"
+          }}
+        >
+          <Swiper
+            modules={[Autoplay, Pagination, EffectCoverflow]}
+            spaceBetween={30}
+            slidesPerView={isMobile ? 1 : 3}
+            centeredSlides={true}
+            loop={true}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 20,
+              stretch: 0,
+              depth: 200,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            className="client-slider"
+          >
+            {clientLogos.map((logo, index) => (
+              <SwiperSlide key={index}>
+                <ClientLogoContainer sx={{ 
+                  padding: "2rem", 
+                  display: "flex", 
+                  justifyContent: "center", 
+                  alignItems: "center", 
+                  height: "150px",
+                  border: "1px solid rgba(255, 0, 0, 0.1)"
+                }}>
+                  <Box
+                    component="img"
+                    src={logo}
+                    alt={`Client ${index + 1}`}
+                    sx={{
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      objectFit: "contain",
+                      transition: "transform 0.5s ease, filter 0.3s ease",
+                      filter: "brightness(0.9) contrast(1.1)",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                        filter: "brightness(1.1) contrast(1.2) drop-shadow(0 0 5px rgba(255,0,0,0.5))",
+                      },
+                    }}
+                  />
+                </ClientLogoContainer>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
       </ScrollerSection>
     </Box>
   );

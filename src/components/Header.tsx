@@ -319,7 +319,7 @@ const Header: React.FC = () => {
     { name: "Technologies", path: "/technologies" },
     { name: "Domain Verticals", path: "/domainvertical" },
     { name: "Services", path: "/services" },
-    { name: "Team", path: "/team" },
+    { name: "Team", path: "/ourteam" },
   ];  
   
   const variants = {
@@ -395,7 +395,7 @@ const Header: React.FC = () => {
               </AnimatePresence>
             </NavItem>
           ))}
-          
+          <Link to="/contactus" style={{ textDecoration: "none" }}>
           <ActionButton
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -403,6 +403,7 @@ const Header: React.FC = () => {
           >
             Contact Us
           </ActionButton>
+          </Link>
         </NavLinks>
         
         <MobileMenuButton onClick={() => setIsOpen(!isOpen)}>
