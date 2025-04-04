@@ -5,14 +5,14 @@ import { GiDatabase } from "react-icons/gi";
 
 // Define the service interface
 interface Service {
-  icon: JSX.Element;
+  icon: React.ReactNode; // Changed from JSX.Element to React.ReactNode
   title: string;
   description: string;
 }
 
 const Services: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  
+ 
   const services: Service[] = [
     { icon: <FaDatabase />, title: "Database Support", description: "Comprehensive database management and optimization solutions" },
     { icon: <FaCloud />, title: "Cloud Support", description: "Seamless cloud integration and maintenance services" },
@@ -34,13 +34,13 @@ const Services: React.FC = () => {
             <div className="underline-glow"></div>
           </div>
         </div>
-        
+       
         {/* Services grid */}
         <div className="services-grid">
           {services.map((service, index) => (
             <div
               key={index}
-              className="service-card"
+              className={`service-card ${hoveredIndex === index ? 'hovered' : ''}`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
