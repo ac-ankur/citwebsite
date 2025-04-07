@@ -36,7 +36,7 @@
     box-shadow: 1px 9px 20px rgba(255, 0, 0, 0.3);
     text-align: center;
     /* border: 2px solid #b71c1c; */
-    max-width: 250px;
+    max-width: 350px;
     transform: translateY(10px);
     opacity: 0;
     transition: all 2s ease-out, transform  0.3s ease-in-out, box-shadow 0.3s ease-in-out;

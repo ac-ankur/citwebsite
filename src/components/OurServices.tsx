@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "../assets/css/OurServices.css"
 import { FaDatabase, FaCloud, FaMobileAlt, FaRobot, FaCogs, FaHeadset, FaShoppingCart } from "react-icons/fa";
 import { GiDatabase } from "react-icons/gi";
 
-// Define the service interface
+
 interface Service {
-  icon: React.ReactNode; // Changed from JSX.Element to React.ReactNode
+  icon: React.ReactNode; 
   title: string;
   description: string;
 }
 
 const Services: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
- 
+  
   const services: Service[] = [
     { icon: <FaDatabase />, title: "Database Support", description: "Comprehensive database management and optimization solutions" },
     { icon: <FaCloud />, title: "Cloud Support", description: "Seamless cloud integration and maintenance services" },
@@ -23,7 +23,9 @@ const Services: React.FC = () => {
     { icon: <FaHeadset />, title: "Complete IT Help Desk", description: "24/7 technical support and IT assistance" },
     { icon: <GiDatabase />, title: "Oracle Applications", description: "Expert Oracle implementation and consulting services" },
   ];
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+},[]);
   return (
     <section className="services-section">
       <div className="services-container">

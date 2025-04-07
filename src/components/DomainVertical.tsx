@@ -249,7 +249,7 @@ const NeonTitle = styled(Typography)`
 
 // Refined IconCard with improved proportions - removed hover color change
 const IconCard = styled(Card)`
-  height: 60%;
+  height: 100%;
   background: rgba(231, 227, 227, 0.95);
   backdrop-filter: blur(15px);
   border-radius: 14px;
@@ -321,7 +321,7 @@ const FloatingCard = styled(Card)`
 // Refined GIF with smaller size
 const GlowingGif = styled.img`
   transition: all 0.6s ease;
-  max-width: 40%;
+  max-width: 80%;
   height: auto;
 filter: invert(1) drop-shadow(0 0 2px rgba(255, 0, 0, 0.5));
 
@@ -359,7 +359,9 @@ const TrueZigZagLayout: React.FC = () => {
   const [visibleSections, setVisibleSections] = useState<number[]>([]);
   const sectionRefs = useRef<React.RefObject<HTMLDivElement>[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
-
+useEffect(() => {
+    window.scrollTo(0, 0);
+},[]);
   // Configure refs for sections
   sectionRefs.current = Array(sectionData.length)
     .fill(null)
@@ -642,16 +644,18 @@ const TrueZigZagLayout: React.FC = () => {
                           flexDirection: "row",
                           alignItems: "center",
                           padding: "0.8rem",
-                          justifyContent: "flex-start",
+                          justifyContent: "center",
                           gap: 2,
                         }}
                       >
                         <GlowingGif
                           src={section.gifUrl}
                           alt={section.heading}
-                          style={{ maxWidth: "15%" }}
+                          // style={{ maxWidth: "15%" }}
                         />
-                        <Typography
+                        
+                      </Box>
+                      <Typography
                           variant="h6"
                           sx={{
                             fontWeight: "bold",
@@ -665,7 +669,6 @@ const TrueZigZagLayout: React.FC = () => {
                         >
                           {section.heading}
                         </Typography>
-                      </Box>
                     </IconCard>
                   </Box>
 

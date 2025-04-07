@@ -319,7 +319,9 @@ const TechnologiesPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const cardsRef = useRef<React.RefObject<HTMLDivElement>[]>([]);
-
+useEffect(() => {
+    window.scrollTo(0, 0);
+},[]);
   // Configure refs for cards
   cardsRef.current = Array(techIcons.length)
     .fill(null)

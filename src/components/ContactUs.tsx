@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import "../assets/css/ContactUs.css"
 import {
   FaPhone,
@@ -34,7 +34,9 @@ const ContactForm: React.FC = () => {
     message: "",
     consent: false,
   });
-
+useEffect(() => {
+    window.scrollTo(0, 0);
+},[]);
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;

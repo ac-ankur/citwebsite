@@ -6,7 +6,7 @@ import Shreevidya from "../assets/images/team/vidyamam.jpeg"
 import Rahul from "../assets/images/team/rahulsir.jpeg"
 import VinodSir from "../assets/images/team/binodsir.jpeg"
 import RiteshSir from "../assets/images/team/riteshsir.jpeg"
-
+import RohitSir from "../assets/images/team/rohitsir.jpeg"
 
 // Define the interface for team member data
 interface TeamMember {
@@ -34,30 +34,36 @@ const teamMembers: TeamMember[] = [
     description:
       "Rahul, with over 22 years of global experience (ex Deloitte) on multiple technologies, is an expert in online and mobile digitisation strategies and handled multiple projects globally.",
   },
+ 
+];
+
+const teamMembers2: TeamMember[] = [
   {
-    name: "Rahul Wali",
+    name: "Vinod Gupta",
     image: VinodSir,
     description:
-      "Rahul, with over 22 years of global experience (ex Deloitte) on multiple technologies, is an expert in online and mobile digitisation strategies and handled multiple projects globally.",
+      "Vinod Gupta, 13+ years expert project manager with substantial experience in leading all stages of technological projects. Excels at motivating and managing team to obtain top-level performance.",
   },
   {
-    name: "Rahul Wali",
+    name: "Ritesh Kumar",
     image: RiteshSir,
     description:
-      "Rahul, with over 22 years of global experience (ex Deloitte) on multiple technologies, is an expert in online and mobile digitisation strategies and handled multiple projects globally.",
+      "Ritesh, HR with 13+ years experience has extensive background in HR generalist affairs, employee recruitment and retention, HR policies development and legal compliance.",
   },
   {
-    name: "Rahul Wali",
-    image: "https://via.placeholder.com/150",
+    name: "Rohit Chaudhary",
+    image: RohitSir,
     description:
-      "Rahul, with over 22 years of global experience (ex Deloitte) on multiple technologies, is an expert in online and mobile digitisation strategies and handled multiple projects globally.",
+      "5+ Years of experience in cloud computing, python development & training supoport programs management.",
   },
+ 
 ];
 
 const TeamPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
+    window.scrollTo(0,0);
     setTimeout(() => setIsLoaded(true), 100);
   }, []);
 
@@ -70,6 +76,17 @@ const TeamPage: React.FC = () => {
       {/* Team Section */}
       <div className="team-container">
         {teamMembers.map((member, index) => (
+          <div key={index} className={`team-card ${isLoaded ? "loaded" : ""}`}>
+            <div className="team-image">
+              <img src={member.image} alt={member.name} />
+            </div>
+            <h3 className="team-name">{member.name}</h3>
+            <p className="team-description">{member.description}</p>
+          </div>
+        ))}
+      </div>
+      <div className="team-container">
+        {teamMembers2.map((member, index) => (
           <div key={index} className={`team-card ${isLoaded ? "loaded" : ""}`}>
             <div className="team-image">
               <img src={member.image} alt={member.name} />
