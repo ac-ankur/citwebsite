@@ -406,21 +406,22 @@ useEffect(() => {
       setIsAnimating(false);
     }, 800);
   };
+
   return (
     <Box style={{ backgroundColor: "#121212" }}>
+        
       <Perspective3DContainer>
+      
         <AnimatedBackground />
-        <NeonTitle variant="h3">Our Technologies</NeonTitle>
-  
-        {/* Left navigation button placed directly in the Perspective3DContainer */}
+        <NeonTitle variant="h3" > Our Technologies  </NeonTitle>
         <NavButton 
-          style={{ left: "20px" }}
-          onClick={handlePrev}
-          aria-label="Previous technology"
-        >
-          <KeyboardArrowLeftIcon />
-        </NavButton>
-  
+        style={{ left: "20px" }}
+        onClick={handlePrev}
+        aria-label="Previous technology"
+      >
+        <KeyboardArrowLeftIcon />
+      </NavButton>
+
         <StackContainer>
           {techIcons.map((tech, index) => (
             <StackCard
@@ -428,27 +429,73 @@ useEffect(() => {
               ref={cardsRef.current[index]}
               isMobile={isMobile}
             >
-              {/* Card content remains the same */}
               <ImageContainer isMobile={isMobile}>
                 <TechImage src={tech.icon} alt={tech.title} />
               </ImageContainer>
-  
+
               <ContentContainer isMobile={isMobile}>
-                {/* Content remains the same */}
+                <Typography
+                  variant={isMobile ? "h5" : "h4"}
+                  sx={{
+                    fontWeight: "bold",
+                    marginBottom: 2,
+                    background: "linear-gradient(90deg, #ff0000, #cc0000)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                    textShadow: "0 0 5px rgba(255,0,0,0.2)",
+                  }}
+                >
+                  {tech.title}
+                </Typography>
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "#e0e0e0",
+                    marginBottom: 3,
+                    maxWidth: "90%",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {`Our advanced ${tech.title} solutions provide cutting-edge capabilities tailored to your business needs. Leverage our expertise to stay ahead of the competition.`}
+                </Typography>
+
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  {Array(5)
+                    .fill(null)
+                    .map((_, i) => (
+                      <Box
+                        key={i}
+                        sx={{
+                          width: "30px",
+                          height: "4px",
+                          backgroundColor:
+                            i < 4 ? "#ff0000" : "rgba(255,0,0,0.3)",
+                          borderRadius: "2px",
+                        }}
+                      />
+                    ))}
+                  <Typography
+                    sx={{ color: "#999", marginLeft: 1, fontSize: "14px" }}
+                  >
+                    {`${index + 1}/${techIcons.length}`}
+                  </Typography>
+                </Box>
               </ContentContainer>
             </StackCard>
           ))}
         </StackContainer>
-  
-        {/* Right navigation button placed directly in the Perspective3DContainer */}
+
+      
         <NavButton 
-          style={{ right: "20px" }}
-          onClick={handleNext}
-          aria-label="Next technology"
-        >
-          <KeyboardArrowRightIcon />
-        </NavButton>
-  
+        style={{ right: "20px" }}
+        onClick={handleNext}
+        aria-label="Next technology"
+      >
+        <KeyboardArrowRightIcon />
+      </NavButton>
+
         <ProgressContainer>
           {techIcons.map((_, index) => (
             <ProgressDot
