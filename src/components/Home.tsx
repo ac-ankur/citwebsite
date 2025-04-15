@@ -500,7 +500,8 @@ const HomePage = () => {
               fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
               transform: isVisible? "translateY(0)" : "translateY(50px)",
               opacity: isVisible ? 1 : 0,
-              transition: "transform 0.8s ease, opacity 0.8s ease"
+              transition: "transform 0.8s ease, opacity 0.8s ease",
+              marginBottom:'2rem'
             }}
           >
             About Us
@@ -642,7 +643,9 @@ const HomePage = () => {
               fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
               transform: isVisible ? "translateY(0)" : "translateY(50px)",
               opacity: isVisible ? 1 : 0,
-              transition: "transform 0.8s ease, opacity 0.8s ease"
+              transition: "transform 0.8s ease, opacity 0.8s ease",
+              marginBottom:'2rem'
+
             }}
           >
             Our Technologies
