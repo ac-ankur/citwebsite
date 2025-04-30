@@ -11,7 +11,7 @@ import TeamPage from './components/Teams';
 import Services from './components/OurServices';
 import ContactForm from './components/ContactUs';
 import { createGlobalStyle } from "styled-components";
-// import TrueZigZagLayout from './components/DomainVertical';
+
 const GlobalStyles = createGlobalStyle`
   ::-webkit-scrollbar {
     width: 10px;
